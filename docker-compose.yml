@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        version: 10.2.2
+        version: 10.6.3
     restart: unless-stopped
     environment: 
       GDB_JAVA_OPTS: >-

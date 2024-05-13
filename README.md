@@ -2,6 +2,33 @@ This keeps the infrastructure that builds docker images for [GraphDB](http://gra
 
 Check [Docker Hub Images](https://hub.docker.com/r/ontotext/graphdb/) for information on how to use the images.
 
+# Quick build
+
+```bash
+# git clone https://github.com/Ontotext-AD/graphdb-docker.git
+git clone https://github.com/MarieMartin33/graphdb-docker.git
+cd graphdb-docker
+# ckeck makefile
+vi Makefile
+# check docker file
+vi Dockerfile
+make build-image VERSION=10.6.3
+# cd preload to preload, other option is cd loadrdf
+cd preload
+# check .env
+vi .env
+# check docker-compose.yla
+vi docker-compose.yml
+# check graphdb-repo.ttl
+vi graphdb-repo.ttl
+# build graph-data
+docker-compose build
+docker-compose up -d
+# build and run docker image
+cd ..
+docker-compose up -d --build
+```
+
 # Building a docker image
 
 You will need docker and make installed on your machine.
@@ -12,16 +39,16 @@ You will need docker and make installed on your machine.
 make build-image VERSION=<the-version-that-you-want>
 ```
 
-for example the most recent version as of this writing is 10.2.2 so run
+for example the most recent version as of this writing is 10.6.3 so run
 ```bash
-make build-image VERSION=10.2.2
+make build-image VERSION=10.6.3
 ```
 
-this will build an image that you can use called ontotext/graphdb:10.2.2
+this will build an image that you can use called ontotext/graphdb:10.6.3
 You can run the image now with
 
 ```bash
-docker run -d -p 7200:7200 ontotext/graphdb:10.2.2
+docker run -d -p 7200:7200 ontotext/graphdb:10.6.3
 ```
 
 Consult the docker hub documentation for more information.
@@ -44,7 +71,7 @@ By default it will:
 When running the preload docker-compose various parameters can be provided in the `preload/.env` file:
 
 ```bash
-GRAPHDB_VERSION=10.2.2
+GRAPHDB_VERSION=10.6.3
 GRAPHDB_HEAP_SIZE=3g
 GRAPHDB_HOME=../graphdb-data
 REPOSITORY_CONFIG_FILE=./graphdb-repo.ttl

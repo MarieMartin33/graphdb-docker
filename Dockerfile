@@ -1,7 +1,7 @@
-FROM eclipse-temurin:11-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
 # Build time arguments
-ARG version=10.2.2
+ARG version=10.6.3
 
 ENV GRAPHDB_PARENT_DIR=/opt/graphdb
 ENV GRAPHDB_HOME=${GRAPHDB_PARENT_DIR}/home
